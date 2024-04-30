@@ -746,8 +746,8 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 function getVLESSConfig(userID, hostName) {
-	const vlessws = `vless://${userID}@time.cloudflare.com:8880?encryption=none&type=ws&host=${hostName}&path=%2Fvless#${hostName}`
-	const vlesswstls = `vless://${userID}@time.cloudflare.com:8443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2Fvless#${hostName}`
+	const vlessws = `vless://${userID}@time.cloudflare.com:80?encryption=none&type=ws&host=${hostName}&path=%2Fvless#${hostName}`
+	const vlesswstls = `vless://${userID}@time.cloudflare.com:443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2Fvless#${hostName}`
 	return `
 
 ============================== Configuration details ========================= ========
