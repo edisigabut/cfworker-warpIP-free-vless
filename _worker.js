@@ -882,42 +882,6 @@ ${vlessSec}
   </html>`;
 }
 
-const portSet_http = new Set([80, 8080, 8880, 2052, 2086, 2095, 2082]);
-const portSet_https = new Set([443, 8443, 2053, 2096, 2087, 2083]);
-
-function createVLESSSub(userID_Path, hostName) {
-	const userIDArray = userID_Path.includes(',') ? userID_Path.split(',') : [userID_Path];
-	const commonUrlPart_http = `?encryption=none&security=none&fp=random&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#`;
-	const commonUrlPart_https = `?encryption=none&security=tls&sni=${hostName}&fp=random&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#`;
-
-	const output = userIDArray.flatMap((userID) => {
-		const httpConfigurations = Array.from(portSet_http).flatMap((port) => {
-			if (!hostName.includes('pages.dev')) {
-				const urlPart = `${hostName}-HTTP-${port}`;
-				const vlessMainHttp = 'vless://' + userID + '@' + hostName + ':' + port + commonUrlPart_http + urlPart;
-				return proxyIPs.flatMap((proxyIP) => {
-					const vlessSecHttp = 'vless://' + userID + '@' + proxyIP + ':' + port + commonUrlPart_http + urlPart + '-' + proxyIP + '-EDtunnel';
-					return [vlessMainHttp, vlessSecHttp];
-				});
-			}
-			return [];
-		});
-
-		const httpsConfigurations = Array.from(portSet_https).flatMap((port) => {
-			const urlPart = `${hostName}-HTTPS-${port}`;
-			const vlessMainHttps = 'vless://' + userID + '@' + hostName + ':' + port + commonUrlPart_https + urlPart;
-			return proxyIPs.flatMap((proxyIP) => {
-				const vlessSecHttps = 'vless://' + userID + '@' + proxyIP + ':' + port + commonUrlPart_https + urlPart + '-' + proxyIP + '-EDtunnel';
-				return [vlessMainHttps, vlessSecHttps];
-			});
-		});
-
-		return [...httpConfigurations, ...httpsConfigurations];
-	});
-
-	return output.join('\n');
-}
-
 ============================== Configuration details ========================= ========
 
 
