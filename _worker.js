@@ -822,11 +822,9 @@ function getVLESSConfig(userID, hostName) {
 		});
 	}
   </script>
-  </html>`;
-}
+  </html>
 
 ============================== Configuration details ========================= ========
-
 
 #################################################### ###############
 1. CF-workers-vless+ws node, the sharing link is as follows:
