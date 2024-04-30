@@ -818,7 +818,6 @@ clash-meta
 -------------------------------------------------- -------------
 #################################################### ###############
   <html>
-  ${htmlHead}
   <body>
   <pre style='background-color: transparent; border: none;'>${header}</pre>
   <pre>${output}</pre>
