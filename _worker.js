@@ -6,7 +6,7 @@ import { connect } from 'cloudflare:sockets';
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
 let userID = 'd0b0db77-5ad8-4bae-9a86-1be3c7fd82d2';
 
-const proxyIPs = ['103.150.92.161'];
+const proxyIPs = ['cdn.xn--b6gac.eu.org', 'cdn-b100.xn--b6gac.eu.org', '8.222.244.123', 'cdn-all.xn--b6gac.eu.org', 'workers.cloudflare.cyou'];
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
 
 let dohURL = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg='; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
@@ -746,8 +746,8 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 function getVLESSConfig(userID, hostName) {
-	const vlessws = `vless://${userID}@time.cloudflare.com:8880?encryption=none&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#${hostName}`
-	const vlesswstls = `vless://${userID}@time.cloudflare.com:8443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2F%3Fed%3D2048#${hostName}`
+	const vlessws = `vless://${userID}@time.cloudflare.com:8880?encryption=none&type=ws&host=${hostName}&path=%2Fvless#${hostName}`
+	const vlesswstls = `vless://${userID}@time.cloudflare.com:8443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2Fvless#${hostName}`
 	return `
 
 ============================== Configuration details ========================= ========
@@ -767,7 +767,7 @@ Port (port): 7 http ports can be selected arbitrarily (80, 8080, 8880, 2052, 208
 User ID (uuid): ${userID}
 Transport protocol (network): ws/websocket
 Masquerade domain name (host): ${hostName}
-Path (path): /?ed=2048
+Path (path): /vless
 #################################################### ###############
 
 
@@ -785,7 +785,7 @@ Port (port): 6 https ports can be selected arbitrarily (443, 8443, 2053, 2083, 2
 User ID (uuid): ${userID}
 Transport protocol (network): ws/websocket
 Masquerade domain name (host): Brother, where is your custom domain name?
-Path (path): /?ed=2048
+Path (path): /vless
 Transport Security (TLS): On
 Skip certificate verification (allowlnsecure): false
 #################################################### ###############
@@ -804,7 +804,7 @@ clash-meta
    sni: ${hostName}
    client-fingerprint: chrome
    ws-opts:
-     path: "/?ed=2048"
+     path: "/vless"
      headers:
        host: ${hostName}
 -------------------------------------------------- -------------
