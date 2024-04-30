@@ -758,6 +758,11 @@ function getVLESSConfig(userID, hostName) {
 
 ${vlessws}
 
+---------------------------------------------------------------
+${vlessws}
+<button onclick='copyToClipboard("${vlessws}")'><i class="fa fa-clipboard"></i> Copy vlessMain</button>
+---------------------------------------------------------------
+
 -------------------------------------------------- -------------
 Note: The current node does not need a domain name, and the TLS option is turned off
 -------------------------------------------------- -------------
@@ -776,7 +781,10 @@ Path (path): /vless
 
 ${vlesswstls}
 
--------------------------------------------------- -------------
+---------------------------------------------------------------
+${vlesswstls}
+<button onclick='copyToClipboard("${vlesswstls}")'><i class="fa fa-clipboard"></i> Copy vlessMain</button>
+---------------------------------------------------------------
 Note: The masquerading domain name host after the client ws option must be changed to your custom domain name
 -------------------------------------------------- -------------
 The required civilization parameters of the client are as follows:
@@ -809,5 +817,23 @@ clash-meta
        host: ${hostName}
 -------------------------------------------------- -------------
 #################################################### ###############
+  <html>
+  ${htmlHead}
+  <body>
+  <pre style='background-color: transparent; border: none;'>${header}</pre>
+  <pre>${output}</pre>
+  </body>
+  <script>
+	function copyToClipboard(text) {
+	  navigator.clipboard.writeText(text)
+		.then(() => {
+		  alert("Copied to clipboard");
+		})
+		.catch((err) => {
+		  console.error("Failed to copy to clipboard:", err);
+		});
+	}
+  </script>
+  </html>
 `;
 }
