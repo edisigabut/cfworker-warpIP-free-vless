@@ -750,31 +750,6 @@ function getVLESSConfig(userID, hostName) {
 	const vlesswstls = `vless://${userID}@time.cloudflare.com:443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2Fvless#${hostName}`
 	return `
 
-function getVLESSConfig(userIDs, hostName) {
-	const commonUrlPart = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#${hostName}`;
-	const hashSeparator = "################################################################";
-
-	// Split the userIDs into an array
-	const userIDArray = userIDs.split(",");
-
-	// Prepare output string for each userID
-	const output = userIDArray.map((userID) => {
-		const vlessMain = 'vless://' + userID + '@' + hostName + commonUrlPart;
-		const vlessSec = 'vless://' + userID + '@' + proxyIP + commonUrlPart;
-		return `<h2>UUID: ${userID}</h2>${hashSeparator}\nv2ray default ip
----------------------------------------------------------------
-${vlessMain}
-<button onclick='copyToClipboard("${vlessMain}")'><i class="fa fa-clipboard"></i> Copy vlessMain</button>
----------------------------------------------------------------
-v2ray with bestip
----------------------------------------------------------------
-${vlessSec}
-<button onclick='copyToClipboard("${vlessSec}")'><i class="fa fa-clipboard"></i> Copy vlessSec</button>
----------------------------------------------------------------`;
-	}).join('\n');
-	const sublink = `https://${hostName}/sub/${userIDArray[0]}?format=clash`
-	const subbestip = `https://${hostName}/bestip/${userIDArray[0]}`;
-	const clash_link = `https://api.v1.mk/sub?target=clash&url=${encodeURIComponent(sublink)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
 	// Prepare header string
 	const header = `
 <p align='center'><img src='https://cloudflare-ipfs.com/ipfs/bafybeigd6i5aavwpr6wvnwuyayklq3omonggta4x2q7kpmgafj357nkcky' alt='图片描述' style='margin-bottom: -50px;'>
