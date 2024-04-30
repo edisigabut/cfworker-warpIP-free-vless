@@ -1,9 +1,7 @@
 ## setup cf worker with WARP IP without VPS totally free CDN V2RAY
   
   source repo. https://github.com/zizifn/edgetunnel
-  ![image](https://github.com/opiran-club/cfworker-warpIP-free-vless/assets/130220895/2ce649f6-84ac-4656-9c10-3ab8b3563466)
 
-  
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 ###  ‼️ INSTRUCTION ‼️
@@ -16,11 +14,7 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
-### همچنین، می‌توانید روی دکمه زیر کلیک کنید تا مستقیماً وارد  page.dev در cloudflare شوید ![image](https://github.com/opiran-club/cfworker-warpIP-free-vless/assets/130220895/90abe8f9-e62d-48b5-9352-7b5255a6303a)
-
-
 ‼️[Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/?url=https://github.com/opiran-club/cfworker-warpIP-free-vless)‼️
-
 
 
 #### How to use:
