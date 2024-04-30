@@ -750,86 +750,12 @@ function getVLESSConfig(userID, hostName) {
 	const vlesswstls = `vless://${userID}@time.cloudflare.com:443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2Fvless#${hostName}`
 	return `
 
-  <head>
-	<style>
-	body {
-	  font-family: Arial, sans-serif;
-	  background-color: #f0f0f0;
-	  color: #333;
-	  padding: 10px;
-	}
-
-	a {
-	  color: #1a0dab;
-	  text-decoration: none;
-	}
-	img {
-	  max-width: 100%;
-	  height: auto;
-	}
-
-	pre {
-	  white-space: pre-wrap;
-	  word-wrap: break-word;
-	  background-color: #fff;
-	  border: 1px solid #ddd;
-	  padding: 15px;
-	  margin: 10px 0;
-	}
-	/* Dark mode */
-	@media (prefers-color-scheme: dark) {
-	  body {
-		background-color: #333;
-		color: #f0f0f0;
-	  }
-
-	  a {
-		color: #9db4ff;
-	  }
-
-	  pre {
-		background-color: #282a36;
-		border-color: #6272a4;
-	  }
-	}
-	</style>
-
-	<!-- Add FontAwesome library -->
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-  </head>
-  `;
-
-	// Join output with newlines, wrap inside <html> and <body>
-	return `
-  <html>
-  <body>
-  <pre style='background-color: transparent; border: none;'></pre>
-  <pre>${output}</pre>
-  </body>
-  <script>
-	function copyToClipboard(text) {
-	  navigator.clipboard.writeText(text)
-		.then(() => {
-		  alert("Copied to clipboard");
-		})
-		.catch((err) => {
-		  console.error("Failed to copy to clipboard:", err);
-		});
-	}
-  </script>
-  </html>
-
 ============================== Configuration details ========================= ========
 
 #################################################### ###############
 1. CF-workers-vless+ws node, the sharing link is as follows:
 
 ${vlessws}
-
----------------------------------------------------------------
-${vlessws}
-<button onclick='copyToClipboard("${vlessws}")'><i class="fa fa-clipboard"></i> Copy vlessMain</button>
----------------------------------------------------------------
 
 -------------------------------------------------- -------------
 Note: The current node does not need a domain name, and the TLS option is turned off
@@ -843,15 +769,11 @@ Masquerade domain name (host): ${hostName}
 Path (path): /vless
 #################################################### ###############
 
-
 #################################################### ###############
 2. CF-workers-vless+ws+tls node, the sharing link is as follows:
 
 ${vlesswstls}
 
----------------------------------------------------------------
-${vlesswstls}
-<button onclick='copyToClipboard("${vlesswstls}")'><i class="fa fa-clipboard"></i> Copy vlessMain</button>
 ---------------------------------------------------------------
 Note: The masquerading domain name host after the client ws option must be changed to your custom domain name
 -------------------------------------------------- -------------
