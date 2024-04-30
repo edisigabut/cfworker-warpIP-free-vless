@@ -750,10 +750,6 @@ function getVLESSConfig(userID, hostName) {
 	const vlesswstls = `vless://${userID}@time.cloudflare.com:443?encryption=none&security=tls&type=ws&host=bro,where-is-your-custom-domain-name?&path=%2Fvless#${hostName}`
 	return `
 
-	// Prepare header string
-	const header = `
-	// HTML Head with CSS and FontAwesome library
-	const htmlHead = `
   <head>
 	<style>
 	body {
@@ -806,9 +802,8 @@ function getVLESSConfig(userID, hostName) {
 	// Join output with newlines, wrap inside <html> and <body>
 	return `
   <html>
-  ${htmlHead}
   <body>
-  <pre style='background-color: transparent; border: none;'>${header}</pre>
+  <pre style='background-color: transparent; border: none;'></pre>
   <pre>${output}</pre>
   </body>
   <script>
